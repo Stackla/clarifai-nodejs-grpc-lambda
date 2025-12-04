@@ -1,3 +1,5 @@
+const path = require('path');
+
 let grpc;
 try {
     grpc = require("clarifai-nodejs-grpc/node_modules/@grpc/grpc-js");
@@ -12,7 +14,10 @@ try {
     protoLoader = require('@grpc/proto-loader');
 }
 
-const PROTO_PATH = __dirname + "/../proto";
+const envProtoPath = process.env.CLARIFAI_PROTO_PATH;
+const PROTO_PATH = envProtoPath
+    ? path.resolve(envProtoPath)
+    : path.resolve(__dirname, '..', 'proto');
 const MAX_MESSAGE_LENGTH = 1024 * 1024 * 1024 // 1GB
 
 const packageDefinition = protoLoader.loadSync(
