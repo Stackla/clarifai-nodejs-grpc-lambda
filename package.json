@@ -25,6 +25,6 @@
     "protobufjs": "^6.10.2"
   },
   "devDependencies": {
-    "mocha": "^8.2.1"
+    "mocha": "^11.7.5"
   }
 }
